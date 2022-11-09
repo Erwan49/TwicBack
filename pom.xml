@@ -21,7 +21,7 @@
         <sonar.language>java</sonar.language>
         <sonar.exclusions>**/model/**/*.*</sonar.exclusions>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>

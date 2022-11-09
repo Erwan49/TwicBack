@@ -11,13 +11,13 @@ import lombok.*;
 @Builder
 public class VilleDto {
 
-    private String codeCommune;
-    private String nomCommune;
-    private String codePostal;
-    private String libelleAcheminement;
-    private String ligne5;
-    private String latitude;
-    private String longitude;
+    String codeCommune;
+    String nomCommune;
+    String codePostal;
+    String libelleAcheminement;
+    String ligne5;
+    String latitude;
+    String longitude;
 
     public static VilleDto fromEntity(Ville ville) {
         return VilleDto.builder().codeCommune(ville.getCodeCommune()).nomCommune(ville.getNomCommune()).
