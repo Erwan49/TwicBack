@@ -2,6 +2,7 @@ package fr.eseo.twic.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.eseo.twic.model.Ville;
+import fr.eseo.twic.model.dto.VilleDto;
 import fr.eseo.twic.service.VilleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,8 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(VilleController.class)
@@ -108,6 +110,39 @@ class VilleControllerTest {
                 .andExpect(content().string(equalTo("null")));
 
         verify(villeService, times(1)).getVilleByCodeCommune("00000");
+        verifyNoMoreInteractions(villeService);
+    }
+
+    @Test
+    void shouldAddNewVille() throws Exception {
+
+        VilleDto villeDto = VilleDto.fromEntity(ville1);
+
+        when(villeService.addNewVille(any())).thenReturn(ville1);
+
+        mockMvc.perform(post("/api/villes")
+                        .contentType(APPLICATION_JSON)
+                        .accept(APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(villeDto)))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON))
+                .andExpect(jsonPath("$.nomCommune").value("AMBLEON"));
+
+        verify(villeService, times(1)).addNewVille(any());
+        verifyNoMoreInteractions(villeService);
+    }
+
+    @Test
+    void shouldDeleteVille() throws Exception {
+
+        doNothing().when(villeService).deleteVille(ville1.getCodeCommune());
+
+
+        mockMvc.perform(delete("/api/villes/{codeCommune}", ville1.getCodeCommune()))
+                .andExpect(status().isOk());
+
+        verify(villeService, times(1)).deleteVille(ville1.getCodeCommune());
         verifyNoMoreInteractions(villeService);
     }
 

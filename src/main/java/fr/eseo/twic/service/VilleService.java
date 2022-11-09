@@ -14,7 +14,7 @@ public interface VilleService {
 
     void deleteVille(String id);
 
-    Ville updateVille(Ville ville);
+    Ville updateVille(String codeCommune, Ville ville);
 
     List<Ville> getVillesByCodePostal(String codePostal);
 }
