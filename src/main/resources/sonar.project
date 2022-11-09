@@ -6,7 +6,7 @@ sonar.projectName=TWICBACK
 #sonar.projectVersion=0.0.1-SNAPSHOT
 sonar.projectVersion=${project.version} 
 
-sonar.sources=src/main/java
+sonar.sources=src
 sonar.java.binaries=.
 #sonar.language=java
 
