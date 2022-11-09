@@ -22,18 +22,18 @@ public class Ville {
     @Column(name = "Nom_commune", nullable = false)
     private String nomCommune;
 
-    @Column(name = "Code_postal", nullable = true)
+    @Column(name = "Code_postal", nullable = false)
     private String codePostal;
 
-    @Column(name = "Libelle_acheminement", nullable = true)
+    @Column(name = "Libelle_acheminement", nullable = false)
     private String libelleAcheminement;
 
-    @Column(name = "Ligne_5", nullable = true)
+    @Column(name = "Ligne_5", nullable = false)
     private String ligne5;
 
-    @Column(name = "Latitude", nullable = true)
+    @Column(name = "Latitude", nullable = false)
     private String latitude;
 
-    @Column(name = "Longitude", nullable = true)
+    @Column(name = "Longitude", nullable = false)
     private String longitude;
 }
