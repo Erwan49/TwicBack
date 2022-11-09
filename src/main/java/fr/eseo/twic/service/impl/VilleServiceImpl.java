@@ -81,4 +81,15 @@ public class VilleServiceImpl implements VilleService {
     public List<Ville> getVillesByCodePostal(String codePostal) {
         return villeRepository.findVillesByCodePostal(codePostal);
     }
+
+    @Override
+    public Optional<Ville> getVillesByNomCommune(String nomCommune) {
+        return villeRepository.findVillesByNomCommune(nomCommune);
+    }
+
+    @Override
+    public Optional<Ville> getVillesByLibelleAcheminement(String libelleAcheminement) {
+        return villeRepository.findVillesByLibelleAcheminement(libelleAcheminement);
+    }
+
 }

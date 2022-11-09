@@ -50,4 +50,14 @@ public class VilleController {
         return villeService.getVillesByCodePostal(codePostal);
     }
 
+    @GetMapping("/nomCommune/{nomCommune}")
+    public Optional<Ville> villesByNomCommune(@PathVariable String nomCommune) {
+        return villeService.getVillesByNomCommune(nomCommune);
+    }
+
+    @GetMapping("/libelleAcheminement/{libelleAcheminement}")
+    public Optional<Ville> villesByLibelleAcheminement(@PathVariable String libelleAcheminement) {
+        return villeService.getVillesByLibelleAcheminement(libelleAcheminement);
+    }
+
 }

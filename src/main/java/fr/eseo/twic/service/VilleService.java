@@ -17,4 +17,8 @@ public interface VilleService {
     Ville updateVille(String codeCommune, Ville ville);
 
     List<Ville> getVillesByCodePostal(String codePostal);
+
+    Optional<Ville> getVillesByNomCommune(String nomCommune);
+
+    Optional<Ville> getVillesByLibelleAcheminement(String libelleAcheminement);
 }
