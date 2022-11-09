@@ -5,6 +5,7 @@ import fr.eseo.twic.service.VilleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/villes")
@@ -20,6 +21,11 @@ public class VilleController {
     @GetMapping
     public List<Ville> villes() {
         return villeService.getVilles();
+    }
+
+    @GetMapping("{codeCommune}")
+    public Optional<Ville> ville(@PathVariable String codeCommune) {
+        return villeService.getVilleByCodeCommune(codeCommune);
     }
 
     @GetMapping("/codePostal/{codePostal}")

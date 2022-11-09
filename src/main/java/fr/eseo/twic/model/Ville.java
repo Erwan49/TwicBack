@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Ville {
     @Id
     @Column(name = "Code_commune_INSEE", nullable = false)
-    private String id;
+    private String codeCommune;
 
     @Column(name = "Nom_commune", nullable = false)
     private String nomCommune;
